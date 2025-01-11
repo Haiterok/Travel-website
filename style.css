@@ -7,6 +7,10 @@
   font-family: "Readex Pro", sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .container {
   width: 65%;
   margin: 100px auto;
@@ -49,6 +53,16 @@
   text-decoration: none;
   margin: 0 14px;
   font-size: 28px;
+
+  transition: transform 0.2s ease;
+}
+
+.intro__links a:hover {
+  transform: scale(1.15);
+}
+
+.intro__links a:active {
+  transform: scale(0.95);
 }
 
 /* HEADER */
@@ -84,6 +98,23 @@
   margin-left: 48px;
   font-size: 18px;
   font-weight: 400;
+  position: relative;
+}
+
+.navbar__link::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1.5px;
+  background-color: #fff;
+  bottom: -5px;
+  left: 0;
+  transform: scaleX(0);
+  transition: transform 0.2s ease;
+}
+
+.navbar__link:hover::before {
+  transform: scaleX(1);
 }
 
 /* ABOUT */
@@ -143,11 +174,16 @@
 .discover__img {
   width: 274px;
   height: 346px;
+  transition: transform 0.2s ease;
 }
 
 .discover__img:nth-child(2) {
   width: 316px;
   height: 400px;
+}
+
+.discover__img:hover {
+  transform: scale(1.05);
 }
 
 /* ABOUT */
@@ -173,6 +209,11 @@
   width: 295px;
   height: 373px;
   position: relative;
+  transition: transform 0.2s ease;
+}
+
+.explore__card:hover {
+  transform: scale(1.05);
 }
 
 .explore__caption {
@@ -257,6 +298,7 @@
 
   color: #fff;
   text-decoration: none;
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 .inverted {
@@ -264,6 +306,20 @@
   background-color: #fff;
   font-weight: 500;
 }
+
+.btn:hover {
+  background-color: #1f4a2e;
+}
+
+.inverted:hover {
+  background-color: #e6e6e6;
+}
+
+.btn:active {
+  transform: scale(0.95);
+}
+
+/* MEDIA QUERY */
 
 @media only screen and (max-width: 1300px) {
   .container {
@@ -327,6 +383,8 @@
   .discover__img:nth-child(2) {
     display: none; /* i aint using any js cuz im lazy as fuck */
   }
+
+  /* and also it in all variations looking just ugly (if not use js) */
 
   .explore__cards {
     display: flex;
@@ -451,10 +509,14 @@
   .discover__cards {
     scrollbar-width: thin;
     scrollbar-color: #888 transparent;
-  }
+  } /* I TRIED tO DO SOMETHING, BUT EVEN COPILOT CANT DO IT */
 
   .discover__cards:hover {
     scrollbar-color: #555 transparent;
+  }
+
+  .discover__img:hover {
+    transform: none;
   }
 }
 
